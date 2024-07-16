@@ -11,7 +11,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from gym_floorplan.envs.observation.plan_encoders import MetaFcEncoder, MetaCnnEncoder, MetaCnnResnetEncoder, MetaCnnResidualEncoder
+from gym_floorplan.envs.observation.plan_encoders import MetaFcEncoder, MetaCnnEncoder, MetaCnnResEncoder, MetaCnnResidualEncoder
 
 
 
@@ -252,7 +252,7 @@ class MetaCnnResnet(nn.Module):
         
         self.fenv_config = fenv_config
         
-        self.encoder = MetaCnnResnetEncoder(fenv_config)        
+        self.encoder = MetaCnnResEncoder(fenv_config)        
         
         self._actor_head = nn.Sequential(
             nn.Linear(self.actor_hidden_dim, self.actor_hidden_dim),
