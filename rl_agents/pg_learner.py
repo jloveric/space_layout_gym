@@ -215,12 +215,13 @@ if __name__ == '__main__':
     from pg_config import PgConfig
 
     scenarios_dict = FEnvScenarios(agent_name, action_masking_flag).get_scenarios()
-    
+    print('scenarios_dict', scenarios_dict)
     fenv_config = LaserWallConfig(agent_name, phase, scenarios_dict).get_config()
     agent_config = PgConfig(env_name, agent_name, phase).get_config()
     
     fenv_config.update({'n_envs': agent_config['n_envs']})
     fenv_config.update({'phase': phase})
-    
+    print('agent_config', agent_config)
+    print('fenv_config', fenv_config)
     self = PpoLearner(fenv_config, agent_config)
     self.run_trainer()

@@ -19,6 +19,7 @@ shapely = "^2.0.5"
 numpy = "1.26.4"
 bezier = "2023.7.28"
 gym-floorplan = {path = "gym-floorplan"}
+lion-pytorch = "^0.2.2"
 
 
 [build-system]

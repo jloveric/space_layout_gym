@@ -223,8 +223,8 @@ if __name__ == '__main__':
     agent_name = "DQN"
     phase = 'train'
     action_masking_flag = False
-    #model_name = 'TinyLinearNet'
-    model_name = 'TinyFcNet'
+    model_name = 'TinyLinearNet'
+    #model_name = 'TinyFcNet'
 
     scenarios_dict = FEnvScenarios(agent_name=agent_name, 
                                    action_masking_flag=action_masking_flag, 
