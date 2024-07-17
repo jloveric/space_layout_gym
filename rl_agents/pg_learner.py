@@ -204,7 +204,7 @@ class PpoLearner:
 @click.command()
 @click.option('--debug', type=bool, default=False)
 def run(debug:bool) :
-    env_name = 'DOLW-v0_' 
+    env_name = 'DOLW-v0' 
     agent_name = "PPO"
     phase = 'train'
     action_masking_flag = False
