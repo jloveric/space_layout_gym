@@ -86,7 +86,7 @@ class PgRollout:
         b_log_pis = np.zeros((self.n_interacts, self.n_envs), dtype=np.float32)
         b_values = np.zeros((self.n_interacts+1, self.n_envs), dtype=np.float32)
         b_rewards = np.zeros((self.n_interacts, self.n_envs), dtype=np.float32)
-        b_dones = np.zeros((self.n_interacts, self.n_envs), dtype=np.bool)
+        b_dones = np.zeros((self.n_interacts, self.n_envs), dtype=bool)
         
         b_infos = []
         infos = []

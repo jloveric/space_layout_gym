@@ -155,7 +155,7 @@ class FEnvScenarios:
         
         ### Plan generation method and room/wall count
         
-        self.plan_config_source_name = 'load_random_config'
+        self.plan_config_source_name = 'fixed_test_config' #'load_random_config'
         
         # when create_random_config: if you set is_entrance_adjacency_a_constraint and is_cooridor_entrance_a_constraint to True, then you have to set the corridor id in advance. otherwise it will be set in the end in master_env
         
@@ -170,6 +170,8 @@ class FEnvScenarios:
         
         self.room_set_cardinality = 'Fixed' if self.plan_config_source_name == 'fixed_test_config' else 'X'
         
+        print('self.fixed_test_config', self.plan_config_source_name )
+
         if self.room_set_cardinality == 'Fixed':
             self.n_rooms = self.n_rooms
             self.n_walls = self.n_rooms - 1

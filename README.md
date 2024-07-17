@@ -4,3 +4,9 @@
 
 # Note
 Check other branches for more info.
+
+# How I think it is supposed to work
+
+```
+python rl_agents/pg_learner.py 
+```

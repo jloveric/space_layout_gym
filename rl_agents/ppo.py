@@ -30,8 +30,8 @@ class PPO:
         
         self.cov_var = torch.full(size=(self.act_dim,), fill_value=0.5)
         self.cov_mat = torch.diag(self.cov_var)
-        
-        if self.model_name == "TinyLinearNet":
+        print('model_name', self.model_name)
+        if self.model_name in ["TinyLinearNet","TinyFcNet"]:
             self.net = TinyLinearNet(self.obs_dim, self.act_dim, self.hidden_dim).to(self.device)
         elif self.model_name == "LinearNet":
             self.net = LinearNet(self.obs_dim, self.act_dim, self.hidden_dim).to(self.device)

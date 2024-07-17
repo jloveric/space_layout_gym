@@ -19,7 +19,7 @@ from gym_floorplan.envs.observation.plan_encoders import MetaFcEncoder, MetaCnnE
 #%%
 class TinyLinearNet(nn.Module):
     def __init__(self, obs_dim:int, act_dim:int, hidden_dim:int=128):
-        super(LinearNet, self).__init__()
+        super().__init__()
 
         self.linear1 = nn.Linear(obs_dim, hidden_dim)
         self.linear2 = nn.Linear(hidden_dim, hidden_dim)
@@ -45,7 +45,6 @@ class TinyLinearNet(nn.Module):
         logits = self._actor_head(features)
         value = self._critic_head(features)
         return logits, value
-    
     
     
 #%%

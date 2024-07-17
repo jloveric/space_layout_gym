@@ -11,7 +11,7 @@ import os
 import torch
 import numpy as np
 from pg_rollout import PgRollout
-
+from pathlib import Path
 
 
 #%%
@@ -112,8 +112,13 @@ class PgTrainer:
 
 
     def save_model(self, i):
+        print('self.model_dir', self.model_dir)
+        Path(self.model_dir).mkdir(parents=True, exist_ok=True)
         model_path = os.path.join(self.model_dir, f'model_{i:04}.pth')
         torch.save(self.agent.net.state_dict(), model_path)
+        print('model_path', model_path)
+
+        Path(self.chkpt_txt_fixed_path).parent.mkdir(parents=True, exist_ok=True)
         with open(self.chkpt_txt_fixed_path, "w") as f:
             f.write(str(model_path))
         

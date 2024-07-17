@@ -8,7 +8,7 @@ Created on Fri Aug  5 02:05:20 2022
 
 
 #%%
-import os
+import os, sys
 
 import ast
 import random
@@ -17,8 +17,9 @@ import pandas as pd
 from pprint import pprint
 
 from gym_floorplan.envs.fixed_scenarios_lib import get_fixed_scenario
-
-
+import gymnasium as gym
+import logging
+logging.basicConfig(level=logging.INFO)
 
 
 #%%
@@ -35,7 +36,10 @@ class AdjustableConfigsHandeler:
 
     
     def get_configs(self, episode=None):
-        # print(f"In _load_random_configs of adjustable_configs_handeler episode:{episode}")
+        
+        gym.logger.info(f"In _load_random_configs of adjustable_configs_handeler episode:{episode}")
+        gym.logger.info(f'self.fenv_config {self.fenv_config}')
+        
         if self.fenv_config['plan_config_source_name'] == 'fixed_test_config':
             adjustable_configs = self._get_fixed_test_configs(n_rooms=self.fenv_config['n_rooms'])
             
@@ -186,7 +190,10 @@ class AdjustableConfigsHandeler:
     
     def _load_env_configs(self, episode=None):
         self.plans_df = self._load_plans()
-        
+        print('plans', self.plans_df, flush=True)
+        sys.stdout.flush()
+        logging.info(f"plans {self.plans_df}")
+
         if self.fenv_config['plan_id_for_load_fixed_config']:
             this_plan_df = self.plans_df.loc[self.plans_df['plan_id'] == self.fenv_config['plan_id_for_load_fixed_config']]
         else:
