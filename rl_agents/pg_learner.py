@@ -29,7 +29,7 @@ from env_maker import EnvMaker
 from ppo import PPO
 from pg_trainer import PgTrainer
 from config_saver import ConfigSaver
-
+import click
 
 
 #%%
@@ -201,11 +201,10 @@ class PpoLearner:
         print(f"- - - - Total time is: {elapsed_time} (s)")   
         print(" = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =")
         
-
-    
-    
-if __name__ == '__main__':
-    env_name = 'DOLW-v0' 
+@click.command()
+@click.option('--debug', type=bool, default=False)
+def run(debug:bool) :
+    env_name = 'DOLW-v0_' 
     agent_name = "PPO"
     phase = 'train'
     action_masking_flag = False
@@ -216,12 +215,24 @@ if __name__ == '__main__':
 
     scenarios_dict = FEnvScenarios(agent_name, action_masking_flag).get_scenarios()
     print('scenarios_dict', scenarios_dict)
+    
     fenv_config = LaserWallConfig(agent_name, phase, scenarios_dict).get_config()
     agent_config = PgConfig(env_name, agent_name, phase).get_config()
-    
+    if debug == True :
+        print("debugging!")
+        agent_config['total_timesteps'] = 2
+        agent_config['total_episodes'] = 10
+        agent_config['total_batchs'] = 50
+        agent_config['n_interacts'] = 2
+
+    #print('fenv_config', fenv_config)
+
     fenv_config.update({'n_envs': agent_config['n_envs']})
     fenv_config.update({'phase': phase})
-    print('agent_config', agent_config)
-    print('fenv_config', fenv_config)
+    #print('agent_config', agent_config)
+    #print('fenv_config', fenv_config)
     self = PpoLearner(fenv_config, agent_config)
     self.run_trainer()
+    
+if __name__ == '__main__':
+    run()

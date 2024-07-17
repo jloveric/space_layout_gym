@@ -169,8 +169,9 @@ if __name__ == '__main__':
     phase = 'test'
     test_mode = '_offline'
 
-    trained_scenario_name = 'Scn__2023_04_11_1701__PPO__LinearNet__FTC__08_Rooms__Area__Adj__Ent__AW__SER'
-    
+    #trained_scenario_name = 'Scn__2023_04_11_1701__PPO__LinearNet__FTC__08_Rooms__Area__Adj__Ent__AW__SER'
+    trained_scenario_name = 'Scn__2024_07_17_1337__PPO__FTC__4Rr__ArPrEnAwAd__SQR'
+
     if env_name == 'DOLW-v0':
         fenv_config = LaserWallConfig(agent_name).get_config()
     else:

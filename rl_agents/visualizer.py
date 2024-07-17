@@ -23,6 +23,7 @@ class Visualizer:
     
     def plot_tb(self):
         df_path = os.path.join(self.agent_config['results_dir'], 'res_summary_df.csv')
+        print('df_path', df_path)
         self.df = pd.read_csv(df_path)
         self.df = self.df.reset_index()
         self.df = self.df.rename(columns={'index': 'Batch'})

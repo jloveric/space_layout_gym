@@ -63,6 +63,8 @@ class PgTrainer:
                     self.save_model(self.batch_couner+1)
                     
                 if (self.batch_couner+1) % self.log_freq == 0:
+                    print('plan_df', self.pg_rollout.plan_df)
+                    #self.pg_rollout._save_on_interaction_end(how_done='well_finished')
                     self.write_to_tb(stats, loss_dict, self.batch_couner)
                     self.pg_rollout.plan_df.to_csv(self.agent.agent_config['plan_df_path'], index=False)
                     self.pg_rollout.res_df.to_csv(self.agent.agent_config['res_df_path'], index=False)

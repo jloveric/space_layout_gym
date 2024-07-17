@@ -74,7 +74,7 @@ class PPO:
             print(f"self.model_name: {self.model_name}")
             raise NotImplementedError
 
-        self.optimizer = optim.Adam(self.net.parameters(), lr=1e-3*self.net_lr)
+        self.optimizer = optim.Adam(self.net.parameters(), lr=self.net_lr)
         #print("self.lr", self.net_lr)
         #self.optimizer = Lion(self.net.parameters(), lr=0.1 * self.net_lr)
 
