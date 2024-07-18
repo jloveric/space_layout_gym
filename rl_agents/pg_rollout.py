@@ -114,7 +114,7 @@ class PgRollout:
             
             try:
                 if self.phase == 'train':
-                    print('this info', info)
+                    # print('this info', info)
                     how_done = self._save_info_when_any_env_done(info, done, i)
             except:
                 pass

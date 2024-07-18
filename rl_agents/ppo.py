@@ -46,6 +46,9 @@ class PPO:
             self.net = LinearNet(self.obs_dim, self.act_dim, self.hidden_dim).to(
                 self.device
             )
+            #self.net = CnnNet(self.obs_dim, self.act_dim, self.fenv_config).to(
+            #    self.device
+            #)
         elif self.model_name == "LinearNet":
             self.net = LinearNet(self.obs_dim, self.act_dim, self.hidden_dim).to(
                 self.device
