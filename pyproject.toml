@@ -16,12 +16,12 @@ scikit-image = "^0.24.0"
 webcolors = "^24.6.0"
 torch-intermediate-layer-getter = "^0.1.post1"
 shapely = "^2.0.5"
-numpy = "1.26.4"
-bezier = "2023.7.28"
-gym-floorplan = {path = "gym-floorplan"}
 lion-pytorch = "^0.2.2"
 plotly = "^5.22.0"
 click = "^8.1.7"
+numpy = "^2.0.0"
+bezier = "^2024.6.20"
+gym-floorplan = {path = "gym-floorplan"}
 
 
 [build-system]
