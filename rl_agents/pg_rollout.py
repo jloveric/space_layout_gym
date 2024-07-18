@@ -99,7 +99,8 @@ class PgRollout:
             
             with torch.no_grad():
                 action, log_pi, value = self.agent.select_action(observation)
-                
+            
+            # Technically done is 'terminated'
             state, reward, done, truncated, info = self.env.step(action)
             observation = state['real_obs'] if self.action_masking else state
             
@@ -113,6 +114,7 @@ class PgRollout:
             
             try:
                 if self.phase == 'train':
+                    print('this info', info)
                     how_done = self._save_info_when_any_env_done(info, done, i)
             except:
                 pass
@@ -207,7 +209,9 @@ class PgRollout:
                     
     
     def _save_on_interaction_end(self, how_done):
+        print('Trying to save', how_done)
         if how_done == 'well_finished':
+            print('Saving WELL FINISHED --------------------------------------------------------------------------')
             info_df = pd.DataFrame.from_dict(self.info_dict).T
             self.plan_df = pd.concat([self.plan_df, info_df])# self.plan_df.append(info_df, ignore_index=True)
             

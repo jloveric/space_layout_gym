@@ -44,7 +44,7 @@ class PpoLearner:
         self._update_configs()
         self._make_writer()
         
-            
+        
         self.env = EnvMaker(self.fenv_config).make()
         self._set_seed()
         
